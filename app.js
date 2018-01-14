@@ -7,6 +7,8 @@ const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 
 const hitokoto = require('./routes/hitokoto')
+const index = require('./routes/index')
+const introduce = require('./routes/introduce')
 
 // error handler
 onerror(app)
@@ -32,6 +34,8 @@ app.use(async (ctx, next) => {
 })
 
 // routes
+app.use(index.routes(), index.allowedMethods())
 app.use(hitokoto.routes(), hitokoto.allowedMethods())
+app.use(introduce.routes(), introduce.allowedMethods())
 
 module.exports = app

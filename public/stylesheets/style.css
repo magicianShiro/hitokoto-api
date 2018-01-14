@@ -1,8 +1,100 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html, body {
+  height: 100%;
+}
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+  text-decoration: none;
+}
+
+.background {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-size: cover;
+  background-position-x: 50%;
+  background-position-y: 0;
+  filter: brightness(0.6);
+}
+.wrapper {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.introduce {
+  text-align: center;
+  font-size: 30px;
+  margin: 40px;
+  color: #fff;
+  letter-spacing: 50px;
+  opacity: 0;
+  transition: all .5s;
+}
+
+.introduce.active {
+  letter-spacing: 0px;
+  opacity: 1
+}
+
+.declare {
+  margin: 10px 0;
+}
+
+.hitokoto {
+  margin-top: 50px;
+  font-size: 40px;
+}
+.use {
+  display: flex;
+  width: 520px;
+  flex-wrap: wrap;
+  margin: 100px auto 0;
+}
+
+.img-wrapper {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: 15px 15px;
+  overflow: hidden;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.img-wrapper img {
+  flex: 1;
+  width: 100%;
+  transform-origin: center center;
+  transition: transform .25s;
+}
+
+.img-wrapper:hover img {
+  transform: scale(1.2);
+}
+.img-wrapper .mark {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  line-height: 100px;
+  background-color: rgba(0, 0, 0, .6);
+  color: #fff;
+  border-radius: 50%;
+  transform-origin: center bottom;
+  transform: rotate(-180deg) scale(1.1);
+  transition: transform .35s;
+}
+
+.img-wrapper:hover .mark {
+  transform: rotate(0deg) scale(1.1);
 }

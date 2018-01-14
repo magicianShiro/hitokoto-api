@@ -1,5 +1,55 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  div.background(style={"background-image": "url(" + url + ")"})
+  div.wrapper
+    script(src="/hitokoto/anime")
+    div.introduce 
+      p.declare 该页面背景图取自于
+        a(href="https://www.pixiv.net") P站登录页
+      p.declare 一句话取自于
+        a(href="http://hitokoto.cn/") hitokoto(一言)
+      p.hitokoto
+        script. 
+          hitokoto()
+    div.use
+      div.img-wrapper
+        img(src="/images/all.png", alt="all")
+        div.mark 
+          p 
+            a(href="/introduce/all") 任意类型
+      div.img-wrapper
+        img(src="/images/anime.png", alt="anime")
+        div.mark 
+          p 
+            a(href="/introduce/anime") 动画
+      div.img-wrapper
+        img(src="/images/comic.png", alt="comic")
+        div.mark 
+          p 
+            a(href="/introduce/comic") 漫画
+      div.img-wrapper
+        img(src="/images/game.png", alt="game")
+        div.mark 
+          p 
+            a(href="/introduce/game") 游戏
+      div.img-wrapper
+        img(src="/images/internet.jpeg", alt="internet")
+        div.mark 
+          p 
+            a(href="/introduce/internet") 来自网络
+      div.img-wrapper
+        img(src="/images/myself.png", alt="myself")
+        div.mark 
+          p 
+            a(href="/introduce/myself") 原创
+      div.img-wrapper
+        img(src="/images/novel.jpeg", alt="novel")
+        div.mark
+          p
+            a(href="/introduce/novel") 小说
+      div.img-wrapper
+        img(src="/images/other.jpeg", alt="other")
+        div.mark
+          p
+            a(href="/introduce/other") 其他
