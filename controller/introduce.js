@@ -10,12 +10,11 @@ let catMap = {
   other: '其他'
 }
 
-const toIntroducePage = async (ctx) => { 
-  console.log(ctx.params.target)
-  let target = ctx.params.target
+const toIntroducePage = (req, res) => { 
+  let target = req.params.target
   let cat = catMap[target]
   if (target === 'all') target = '/'
-  await ctx.render('introduce', {
+  res.render('introduce', {
     target,
     cat
   })

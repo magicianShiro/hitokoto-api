@@ -1,29 +1,19 @@
 {
-  "name": "apiServer",
-  "version": "0.1.0",
-  "private": true,
+  "name": "expressis",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "nodemon bin/www",
-    "dev": "./node_modules/.bin/nodemon bin/www",
-    "prd": "pm2 start bin/www",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "debug": "^2.6.3",
-    "koa": "^2.2.0",
-    "koa-bodyparser": "^3.2.0",
-    "koa-convert": "^1.2.0",
-    "koa-json": "^2.0.2",
-    "koa-logger": "^2.0.1",
-    "koa-onerror": "^1.2.1",
-    "koa-router": "^7.1.1",
-    "koa-static": "^3.0.0",
-    "koa-views": "^5.2.1",
-    "pug": "^2.0.0-rc.1",
+    "express": "^4.16.2",
+    "http-proxy-middleware": "^0.17.4",
+    "pug": "^2.0.0-rc.4",
     "request": "^2.83.0",
     "request-promise": "^4.2.2"
-  },
-  "devDependencies": {
-    "nodemon": "^1.8.1"
   }
 }

@@ -1,41 +1,35 @@
-const Koa = require('koa')
-const app = new Koa()
-const views = require('koa-views')
-const json = require('koa-json')
-const onerror = require('koa-onerror')
-const bodyparser = require('koa-bodyparser')
-const logger = require('koa-logger')
+const express = require('express')
+const proxy = require('http-proxy-middleware')
+const path = require('path')
+const app = express()
+const pug = require('pug')
 
+const index = require('./routes/index.js')
 const hitokoto = require('./routes/hitokoto')
-const index = require('./routes/index')
 const introduce = require('./routes/introduce')
 
-// error handler
-onerror(app)
+let option = {
+  target: 'https://i.pximg.net', // target host
+  changeOrigin: true,               // needed for virtual hosted sites
+  pathRewrite: {
+    '^/image': ''     // rewrite path
+  },
+  headers: {
+    'Referer': 'https://www.pixiv.net/'
+  }
+}
+app.use('/image', proxy(option))
 
-// middlewares
-app.use(bodyparser({
-  enableTypes:['json', 'form', 'text']
-}))
-app.use(json())
-app.use(logger())
-app.use(require('koa-static')(__dirname + '/public'))
+app.use(express.static(path.join(__dirname, 'public')));
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
 
-app.use(views(__dirname + '/views', {
-  extension: 'pug'
-}))
 
-// logger
-app.use(async (ctx, next) => {
-  const start = new Date()
-  await next()
-  const ms = new Date() - start
-  console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
+app.use('/', index)
+app.use('/hitokoto', hitokoto)
+app.use('/introduce', introduce)
+
+app.listen(2222, () => {
+    console.log('server is running in port 2222')
 })
-
-// routes
-app.use(index.routes(), index.allowedMethods())
-app.use(hitokoto.routes(), hitokoto.allowedMethods())
-app.use(introduce.routes(), introduce.allowedMethods())
-
-module.exports = app

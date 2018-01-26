@@ -1,8 +1,10 @@
-const router = require('koa-router')()
+const express = require('express')
+const router = express.Router()
 const index = require('../controller/index')
 
-router.get('/', async (ctx, next) => {
-  await index.setBgImage(ctx)
+
+router.get('/', (req, res) => {
+  index.setBgImage(req, res)
 })
 
 module.exports = router

@@ -1,10 +1,9 @@
-const router = require('koa-router')()
+const express = require('express')
+const router = express.Router()
 const introduce = require('../controller/introduce')
 
-router.prefix('/introduce')
-
-router.get('/:target', async (ctx, next) => {
-  await introduce.toIntroducePage(ctx)
+router.get('/:target', (req, res) => {
+  introduce.toIntroducePage(req, res)
 })
 
 module.exports = router

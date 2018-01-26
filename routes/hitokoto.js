@@ -1,38 +1,37 @@
-const router = require('koa-router')()
+const express = require('express')
+const router = express.Router()
 const hotokoto = require('../controller/hitokoto')
 
-router.prefix('/hitokoto')
-
-router.get('/', async (ctx, next) => {
-  await hotokoto.getAll(ctx, next)
+router.get('/', (req, res) => {
+  hotokoto.getAll(req, res)
 })
 
-router.get('/anime', async (ctx, next) => {
-  await hotokoto.getAnime(ctx, next)
+router.get('/anime', (req, res) => {
+  hotokoto.getAnime(req, res)
 })
 
-router.get('/comic', async (ctx, next) => {
-  await hotokoto.getComic(ctx, next)
+router.get('/comic', (req, res) => {
+  hotokoto.getComic(req, res)
 })
 
-router.get('/game', async (ctx, next) => {
-  await hotokoto.getGame(ctx, next)
+router.get('/game', (req, res) => {
+  hotokoto.getGame(req, res)
 })
 
-router.get('/novel', async (ctx, next) => {
-  await hotokoto.getNovel(ctx, next)
+router.get('/novel', (req, res) => {
+  hotokoto.getNovel(req, res)
 })
 
-router.get('/myself', async (ctx, next) => {
-  await hotokoto.getMyself(ctx, next)
+router.get('/myself', (req, res) => {
+  hotokoto.getMyself(req, res)
 })
 
-router.get('/internet', async (ctx, next) => {
-  await hotokoto.getMyself(ctx, next)
+router.get('/internet', (req, res) => {
+  hotokoto.getMyself(req, res)
 })
 
-router.get('/other', async (ctx, next) => {
-  await hotokoto.getMyself(ctx, next)
+router.get('/other', (req, res) => {
+  hotokoto.getMyself(req, res)
 })
 
 module.exports = router
